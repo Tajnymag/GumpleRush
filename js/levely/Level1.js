@@ -10,8 +10,8 @@ GumpleRush.Level1.prototype = {
 
   create: function() {
     //stvoření hráče
-    this.hrac = this.game.add.sprite(100, 300, 'ruza');
-    this.hrac.scale.setTo(1.5);
+    this.hrac = this.game.add.sprite(100, 300, 'ruza');//TODO
+    this.hrac.scale.setTo(1.5);//TODO
  },
 
   update: function() {
