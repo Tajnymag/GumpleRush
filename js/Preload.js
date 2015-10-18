@@ -9,8 +9,7 @@ GumpleRush.Preload.prototype = {
     this.nacitaciPruh.scale.setTo(30);
     this.load.setPreloadSprite(this.nacitaciPruh);
     //načtení textur a map
-    this.load.spritesheet('ruza', 'assets/postavy/ruza_prototyp.png', 32, 32);
-    this.load.tilemap("satny", "assets/pozadi_saten.json", null, Phaser.Tilemap.TILED_JSON);
+    //TODO
 
   },
   create: function() {
