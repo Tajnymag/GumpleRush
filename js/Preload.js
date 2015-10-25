@@ -9,8 +9,7 @@ GumpleRush.Preload.prototype = {
     this.nacitaciPruh.scale.setTo(30);
     this.load.setPreloadSprite(this.nacitaciPruh);
     //načtení textur a map
-    //TODO
-
+    this.load.spritesheet("ruza", "assets/postavy/ruza.png", 24, 24);
   },
   create: function() {
     this.state.start("Level1");

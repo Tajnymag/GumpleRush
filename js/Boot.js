@@ -5,7 +5,7 @@ GumpleRush.Boot = function(){};
 GumpleRush.Boot.prototype = {
 
   preload: function() {
-    this.load.image("nacitacipruh", "assets/menu/nacitacipruh.png");
+    this.game.load.image("nacitacipruh", "assets/menu/nacitacipruh.png");
   },
   create: function() {
     //barva pozadí
