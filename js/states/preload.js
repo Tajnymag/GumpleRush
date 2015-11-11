@@ -12,6 +12,6 @@ GumpleRush.Preload.prototype = {
     this.load.spritesheet("ruza", "assets/postavy/ruza.png", 24, 24);
   },
   create: function() {
-    this.state.start("Level1");
+    this.state.start("Gympl");
   }
 };

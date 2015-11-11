@@ -1,8 +1,8 @@
 var GumpleRush = GumpleRush || {};
 var hrac = hrac || {};
 
-GumpleRush.Level1 = function(){};
-GumpleRush.Level1.prototype = {
+GumpleRush.Gympl = function(){};
+GumpleRush.Gympl.prototype = {
 
   preload: function() {
       this.time.advancedTiming = true;
