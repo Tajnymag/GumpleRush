@@ -9,7 +9,7 @@ GumpleRush.Boot.prototype = {
   },
   create: function() {
     //barva pozadí
-    this.game.stage.backgroundColor = "#fff";
+    this.game.stage.backgroundColor = "#14e4eb";
     //zarovnání
     this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     this.scale.pageAlignHorizontally = true;

@@ -10,3 +10,10 @@ body {
   image-rendering: pixelated; /* CSS4 Proposed */
   -ms-interpolation-mode: nearest-neighbor; /* IE8+ */
 }
+h1 {
+  font-family: "Press Start 2P", cursive;
+}
+#hra {
+  margin: auto;
+  height: 75vh;
+}
