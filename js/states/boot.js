@@ -5,11 +5,11 @@ GumpleRush.Boot = function(){};
 GumpleRush.Boot.prototype = {
 
   preload: function() {
-    this.load.image("nacitacipruh", "assets/menu/nacitacipruh.png");
+    this.game.load.image("nacitacipruh", "assets/menu/nacitacipruh.png");
   },
   create: function() {
     //barva pozadí
-    this.game.stage.backgroundColor = "#fff";
+    this.game.stage.backgroundColor = "#14e4eb";
     //zarovnání
     this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     this.scale.pageAlignHorizontally = true;
