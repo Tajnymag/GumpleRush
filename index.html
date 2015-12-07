@@ -9,7 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-
+    
+    <script>
+      var host = "YOURDOMAIN.github.io";
+      if ((host == window.location.host) && (window.location.protocol != "https:"))
+      window.location.protocol = "https";
+    </script>
+    
     <script src="js/variables.js" charset="utf-8"></script>
     <script src="//cdn.jsdelivr.net/phaser/latest/phaser.js" charset="utf-8"></script>
     <script src="js/states/boot.js" charset="utf-8"></script>
