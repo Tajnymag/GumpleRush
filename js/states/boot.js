@@ -12,6 +12,8 @@ GumpleRush.Boot.prototype = {
     this.game.stage.backgroundColor = "#14e4eb";
     //zarovnání
     this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+    this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+
     this.scale.pageAlignHorizontally = true;
     this.scale.pageAlignVertically = true;
     //this.scale.setScreenSize(true);
