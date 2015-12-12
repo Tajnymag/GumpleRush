@@ -10,3 +10,10 @@ function celaObrazovka() {
     elem.webkitRequestFullscreen();
   }
 }
+
+//detekce stlačení "f" pro zapnutí fullscreenu
+document.addEventListener("keydown", function(e) {
+  if (e.keyCode == 70) {
+    celaObrazovka();
+  }
+}, false);
