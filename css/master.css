@@ -12,6 +12,9 @@ body {
 }
 h1 {
   font-family: "Press Start 2P", cursive;
+  font-size: 5vh;
+  text-shadow: 1px 1px white;
+  text-align: center;
 }
 #hra {
   margin: auto;
