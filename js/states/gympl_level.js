@@ -6,33 +6,46 @@ GumpleRush.Gympl.prototype = {
 
   preload: function() {
       this.time.advancedTiming = true;
-      this.game.load.tilemap("gymplik", "assets/gumple/gymplik.json", null, Phaser.Tilemap.TILED_JSON);
-      this.game.load.image("dvere", "assets/gumple/sady_dlazdic/dvere.png");
-      this.game.load.image("schody", "assets/gumple/sady_dlazdic/schody.png");
-      this.game.load.image("podlaha_strecha_barvy", "assets/gumple/sady_dlazdic/podlaha_strecha_barvy.png");
+      this.game.load.tilemap("gymplik", "assets/gumple/gymplik_one.json", null, Phaser.Tilemap.TILED_JSON);
+      this.load.image("textury", "assets/gumple/sady_dlazdic/final_version.png");
     },
 
   create: function() {
 
-    var mapa;
-    var kolize;
-
-    this.game.stage.backgroundColor = "#0b7cb4";
     this.mapa = this.game.add.tilemap("gymplik");
-    this.mapa.addTilesetImage("kolize", "dvere");
-    this.mapa.addTilesetImage("kolize", "schody");
-    this.mapa.addTilesetImage("kolize", "podlaha_strecha_barvy");
+    this.game.stage.backgroundColor = "#0b7cb4";
+    this.mapa.addTilesetImage("final_version", "textury");
 
-    //this.kolize = this.mapa.createLayer("kolize");
+    this.vzhled = this.mapa.createLayer("vzhled");
+    this.kolize = this.mapa.createLayer("kolize");
+    this.mapa.setCollisionBetween(1, 100000, true, "kolize");
+    this.game.world.setBounds(0, 0, 1200, 720);
 
     //stvoření hráče
-    this.hrac = this.add.sprite(50, 100, "ruza");
+    this.hrac = this.add.sprite(300, 600, "ruza");
+    this.game.physics.arcade.enable(this.hrac);
+    this.hrac.body.gravity.y = 1000;
     this.hrac.animations.add("beh", [2,3], 5, true);
     this.hrac.animations.play("beh");
 
+    this.game.camera.follow(this.hrac);
+
+    this.cursors = this.game.input.keyboard.createCursorKeys();
  },
 
   update: function() {
+    this.game.physics.arcade.collide(this.hrac, this.kolize);
+    this.hrac.body.drag.x = 2000;
+
+    if(this.cursors.up.isDown && this.hrac.body.blocked.down) {
+      this.hrac.body.velocity.y = -700;
+    }
+    if(this.cursors.right.isDown) {
+      this.hrac.body.velocity.x = 500;
+    }
+    if(this.cursors.left.isDown) {
+      this.hrac.body.velocity.x = -500;
+    }
   },
 
   render: function()
