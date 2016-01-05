@@ -31,19 +31,29 @@ GumpleRush.Gympl.prototype = {
     this.game.camera.follow(this.hrac);
 
     this.cursors = this.game.input.keyboard.createCursorKeys();
+    this.wasd = {
+      up: this.game.input.keyboard.addKey(Phaser.Keyboard.W),
+      down: this.game.input.keyboard.addKey(Phaser.Keyboard.S),
+      left: this.game.input.keyboard.addKey(Phaser.Keyboard.A),
+      right: this.game.input.keyboard.addKey(Phaser.Keyboard.D),
+    };
  },
 
   update: function() {
     this.game.physics.arcade.collide(this.hrac, this.kolize);
-    this.hrac.body.drag.x = 2000;
-
-    if(this.cursors.up.isDown && this.hrac.body.blocked.down) {
-      this.hrac.body.velocity.y = -700;
+    if(this.hrac.body.blocked.down) {
+      this.hrac.body.drag.x = 5000;
     }
-    if(this.cursors.right.isDown) {
+    else {
+      this.hrac.body.drag.x = 1000;
+    }
+    if(this.wasd.up.isDown && this.hrac.body.blocked.down || this.cursors.up.isDown && this.hrac.body.blocked.down) {
+      this.hrac.body.velocity.y = -300;
+    }
+    if(this.cursors.right.isDown || this.wasd.right.isDown) {
       this.hrac.body.velocity.x = 500;
     }
-    if(this.cursors.left.isDown) {
+    else if(this.cursors.left.isDown || this.wasd.left.isDown) {
       this.hrac.body.velocity.x = -500;
     }
   },
