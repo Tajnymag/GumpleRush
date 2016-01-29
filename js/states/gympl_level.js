@@ -41,7 +41,7 @@ GumpleRush.Gympl.prototype = {
     this.game.physics.arcade.enable(this.vlasta);
     this.vlasta.body.gravity.y = 1000;
     this.vlasta.animations.add("beh", [0,1], 5, true);
-    this.vlasta.animations.play("beh")
+    this.vlasta.animations.play("beh");
  },
   update: function() {
     this.game.physics.arcade.collide(this.hrac, this.kolize);
