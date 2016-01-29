@@ -9,7 +9,6 @@ GumpleRush.Gympl.prototype = {
       this.game.load.tilemap("gymplik", "assets/gumple/gymplik_one.json", null, Phaser.Tilemap.TILED_JSON);
       this.load.image("textury", "assets/gumple/sady_dlazdic/final_version.png");
     },
-
   create: function() {
 
     this.mapa = this.game.add.tilemap("gymplik");
@@ -37,10 +36,17 @@ GumpleRush.Gympl.prototype = {
       left: this.game.input.keyboard.addKey(Phaser.Keyboard.A),
       right: this.game.input.keyboard.addKey(Phaser.Keyboard.D),
     };
- },
 
+    this.vlasta = this.add.sprite(500, 600, "vlasta");
+    this.game.physics.arcade.enable(this.vlasta);
+    this.vlasta.body.gravity.y = 1000;
+    this.vlasta.animations.add("beh", [0,1], 5, true);
+    this.vlasta.animations.play("beh")
+ },
   update: function() {
     this.game.physics.arcade.collide(this.hrac, this.kolize);
+    this.game.physics.arcade.collide(this.vlasta, this.kolize);
+
     if(this.hrac.body.blocked.down) {
       this.hrac.body.drag.x = 5000;
     }
