@@ -6,7 +6,7 @@ GumpleRush.Preload.prototype = {
 		//načítací obrazovka
 		this.nacitaci_zprava = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Gümple Rush se načítá...", {
 			font: "64px Press Start 2P",
-			fill: "#ff0000",
+			fill: "#ff7300",
 			align: "center"
 		});
 		this.nacitaci_zprava.anchor.setTo(0.5, 0.5);

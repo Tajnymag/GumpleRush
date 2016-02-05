@@ -7,6 +7,14 @@ GumpleRush.Gympl.prototype = {
 	preload: function() {
 		this.time.advancedTiming = true;
 	},
+	vypnutiKolize: function() {
+		for (var i = 0; i < this.seznam_dlazdic_kolize.length; i++) {
+			if (this.seznam_dlazdic_kolize[i].index == 18) {
+				this.seznam_dlazdic_kolize[i].setCollision(false, false, false, false); // left, right, top, bottom
+			}
+		}
+		setTimeout(console.log("test"), 1000);
+	},
 	create: function() {
 		this.mapa = this.game.add.tilemap("gymplik");
 		this.game.stage.backgroundColor = "#0b7cb4";
@@ -63,6 +71,9 @@ GumpleRush.Gympl.prototype = {
 		if (this.wasd.up.isDown && this.hrac.body.blocked.down || this.cursors.up.isDown && this.hrac.body.blocked.down) {
 			this.hrac.body.velocity.y = -300;
 		}
+		else if (this.wasd.down.isDown && this.hrac.body.blocked.down || this.cursors.down.isDown && this.hrac.body.blocked.down){
+			this.vypnutiKolize();
+		}
 		if (this.cursors.right.isDown || this.wasd.right.isDown) {
 			this.hrac.body.velocity.x = 500;
 		} else if (this.cursors.left.isDown || this.wasd.left.isDown) {
@@ -73,5 +84,4 @@ GumpleRush.Gympl.prototype = {
 	render: function() {
 		this.game.debug.text(this.game.time.fps || 'neviem', 10, 10, "#1ec133", "Press Start 2P");
 	}
-
 };
