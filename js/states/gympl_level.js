@@ -7,14 +7,6 @@ GumpleRush.Gympl.prototype = {
   preload: function() {
     this.time.advancedTiming = true;
   },
-  vypnutiKolize: function() {
-    for (var i = 0; i < this.seznam_dlazdic_kolize.length; i++) {
-      if (this.seznam_dlazdic_kolize[i].index == 18) {
-        this.seznam_dlazdic_kolize[i].setCollision(false, false, false, false); // left, right, top, bottom
-      }
-    }
-    setTimeout(console.log("test"), 1000);
-  },
   create: function() {
     this.mapa = this.game.add.tilemap("gymplik");
     this.game.stage.backgroundColor = "#0b7cb4";
@@ -44,6 +36,7 @@ GumpleRush.Gympl.prototype = {
     this.hrac.body.gravity.y = 1000;
     this.hrac.animations.add("beh", [2, 3], 5, true);
     this.hrac.animations.add("klid", [0, 4], 1, true);
+    this.hrac.animations.add("skrceni", [4, 4], 1, true);
 
     this.game.camera.follow(this.hrac);
 
@@ -70,8 +63,6 @@ GumpleRush.Gympl.prototype = {
 
     if (this.wasd.up.isDown && this.hrac.body.blocked.down || this.cursors.up.isDown && this.hrac.body.blocked.down) {
       this.hrac.body.velocity.y = -300;
-    } else if (this.wasd.down.isDown && this.hrac.body.blocked.down || this.cursors.down.isDown && this.hrac.body.blocked.down) {
-      this.vypnutiKolize();
     }
     if (this.cursors.right.isDown || this.wasd.right.isDown) {
       this.hrac.body.velocity.x = 500;
@@ -79,6 +70,8 @@ GumpleRush.Gympl.prototype = {
     } else if (this.cursors.left.isDown || this.wasd.left.isDown) {
       this.hrac.body.velocity.x = -500;
       this.hrac.animations.play("beh");
+    } else if (this.wasd.down.isDown && this.hrac.body.blocked.down || this.cursors.down.isDown && this.hrac.body.blocked.down) {
+      this.hrac.animations.play("skrceni");
     } else {
       this.hrac.animations.play("klid");
     }
