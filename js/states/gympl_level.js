@@ -48,11 +48,17 @@ GumpleRush.Gympl.prototype = {
       right: this.game.input.keyboard.addKey(Phaser.Keyboard.D),
     };
 
+    //stvoření Vlasty
     this.vlasta = this.add.sprite(500, 600, "vlasta");
     this.game.physics.arcade.enable(this.vlasta);
     this.vlasta.body.gravity.y = 1000;
     this.vlasta.animations.add("beh", [0, 1], 5, true);
     this.vlasta.animations.play("beh");
+
+    this.gaudeamus = this.game.add.audio("gaudeamus");
+    this.gaudeamus.volume = 1;
+    this.gaudeamus.loop = true;
+    this.gaudeamus.play();
   },
   update: function() {
     this.game.physics.arcade.collide(this.hrac, this.kolize);

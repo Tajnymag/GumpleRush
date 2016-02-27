@@ -16,7 +16,10 @@ GumpleRush.Preload.prototype = {
 		this.load.spritesheet("vlasta", "assets/postavy/Vlasta.png", 15, 26);
 		this.game.load.tilemap("gymplik", "assets/gumple/gymplik_one.json", null, Phaser.Tilemap.TILED_JSON);
 		this.load.image("textury", "assets/gumple/sady_dlazdic/final_version.png");
-	},	
+
+		//načtení zvuků
+		this.game.load.audio("gaudeamus", "assets/gaudeamus.ogg");
+	},
 	create: function() {
 		this.state.start("Gympl");
 	}
