@@ -19,6 +19,9 @@ GumpleRush.Preload.prototype = {
 
 		//načtení zvuků
 		this.game.load.audio("gaudeamus", "assets/gaudeamus.ogg");
+		this.game.load.audio("skok", "assets/skok.wav");
+		this.game.load.audio("hit", "assets/hit.wav");
+		this.game.load.audio("select", "assets/select.wav");
 	},
 	create: function() {
 		this.state.start("Gympl");

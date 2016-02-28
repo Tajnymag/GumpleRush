@@ -56,9 +56,10 @@ GumpleRush.Gympl.prototype = {
     this.vlasta.animations.play("beh");
 
     this.gaudeamus = this.game.add.audio("gaudeamus");
-    this.gaudeamus.volume = 1;
     this.gaudeamus.loop = true;
     this.gaudeamus.play();
+
+    this.skok = this.game.add.audio("skok");
   },
   update: function() {
     this.game.physics.arcade.collide(this.hrac, this.kolize);
@@ -69,6 +70,7 @@ GumpleRush.Gympl.prototype = {
 
     if (this.wasd.up.isDown && this.hrac.body.blocked.down || this.cursors.up.isDown && this.hrac.body.blocked.down) {
       this.hrac.body.velocity.y = -300;
+      this.skok.play();
     }
     if (this.cursors.right.isDown || this.wasd.right.isDown) {
       this.hrac.body.velocity.x = 500;
