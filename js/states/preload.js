@@ -11,6 +11,8 @@ GumpleRush.Preload.prototype = {
 		});
 		this.nacitaci_zprava.anchor.setTo(0.5, 0.5);
 
+		console.log("Gümple Rush v0.0.1");
+
 		//načtení textur a map
 		this.load.spritesheet("ruza", "assets/postavy/ruza.png", 20, 24);
 		this.load.spritesheet("vlasta", "assets/postavy/Vlasta.png", 15, 26);
