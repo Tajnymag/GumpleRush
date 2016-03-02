@@ -16,17 +16,35 @@
       window.location.protocol = "https";
     </script>
 
-    <script src="js/variables.js" charset="utf-8" async></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/2.4.6/phaser.js" charset="utf-8"></script>
-    <script src="js/states/boot.js" charset="utf-8"></script>
-    <script src="js/states/preload.js" charset="utf-8"></script>
-    <script src="js/states/gympl_level.js" charset="utf-8"></script>
-
   </head>
   <body>
     <h1>Gümple Rush</h1>
-    <div id="hra"></div>
-    <script src="js/main.js"></script>
-    <script src="js/ostatni.js"></script>
+    <iframe id="hra" frameBorder="0" scrolling="no" height="576" width="1024" src="hra.html" allowfullscreen style="display: block;margin: auto"></iframe>
+    <script>
+    //detekce času + změna pozadí
+    function zmenaPozadi() {
+      var ted = new Date();
+      var hodiny = ted.getHours();
+
+      if (hodiny >= 3 && hodiny <= 5) {
+        document.body.style.background = "#243E1C url(assets/pozadi/01-Morning.png) no-repeat center center";
+      } else if (hodiny <= 8) {
+        document.body.style.background = "#457938 url(assets/pozadi/02-Late-Morning.png) no-repeat center center";
+      } else if (hodiny <= 11) {
+        document.body.style.background = "#73CD5F url(assets/pozadi/03-Afternoon.png) no-repeat center center";
+      } else if (hodiny <= 15) {
+        document.body.style.background = "#3A652E url(assets/pozadi/04-Late-Afternoon.png) no-repeat center center";
+      } else if (hodiny <= 17) {
+        document.body.style.background = "#203A1A url(assets/pozadi/05-Evening.png) no-repeat center center";
+      } else if (hodiny <= 19) {
+        document.body.style.background = "#1C071C url(assets/pozadi/06-Late-Evening.png) no-repeat center center";
+      } else if (hodiny <= 21) {
+        document.body.style.background = "#1C071C url(assets/pozadi/07-Night.png) no-repea center center";
+      } else {
+        document.body.style.background = "#08030A url(assets/pozadi/08-Late-Night.png) no-repeat center center";
+      }
+      document.body.style.backgroundSize = "cover";
+    }
+    zmenaPozadi();</script>
   </body>
 </html>

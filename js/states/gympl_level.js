@@ -40,6 +40,20 @@ GumpleRush.Gympl.prototype = {
 
     this.game.camera.follow(this.hrac);
 
+    //stvoření Vlasty
+    this.vlasta = this.add.sprite(500, 600, "vlasta");
+    this.game.physics.arcade.enable(this.vlasta);
+    this.vlasta.body.gravity.y = 1000;
+    this.vlasta.animations.add("beh", [0, 1], 5, true);
+    this.vlasta.animations.play("beh");
+    this.vlasta.body.velocity.x = 50;
+    this.vlasta.body.bounce.x = 1;
+    this.vlasta.anchor.setTo(0.5,0.5);
+
+    this.gaudeamus = this.game.add.audio("gaudeamus");
+    this.gaudeamus.loop = true;
+    this.gaudeamus.play();
+
     this.cursors = this.game.input.keyboard.createCursorKeys();
     this.wasd = {
       up: this.game.input.keyboard.addKey(Phaser.Keyboard.W),
@@ -48,18 +62,20 @@ GumpleRush.Gympl.prototype = {
       right: this.game.input.keyboard.addKey(Phaser.Keyboard.D),
     };
 
-    //stvoření Vlasty
-    this.vlasta = this.add.sprite(500, 600, "vlasta");
-    this.game.physics.arcade.enable(this.vlasta);
-    this.vlasta.body.gravity.y = 1000;
-    this.vlasta.animations.add("beh", [0, 1], 5, true);
-    this.vlasta.animations.play("beh");
-
-    this.gaudeamus = this.game.add.audio("gaudeamus");
-    this.gaudeamus.loop = true;
-    this.gaudeamus.play();
-
     this.skok = this.game.add.audio("skok");
+
+    this.klavesaF = this.game.input.keyboard.addKey(Phaser.Keyboard.F);
+    this.klavesaF.onDown.add(this.celaObrazovka, this);
+  },
+  celaObrazovka: function() {
+    if (this.game.scale.isFullScreen)
+    {
+        this.game.scale.stopFullScreen();
+    }
+    else
+    {
+        this.game.scale.startFullScreen(false);
+    }
   },
   update: function() {
     this.game.physics.arcade.collide(this.hrac, this.kolize);
@@ -73,18 +89,22 @@ GumpleRush.Gympl.prototype = {
       this.skok.play();
     }
     if (this.cursors.right.isDown || this.wasd.right.isDown) {
-      this.hrac.body.velocity.x = 500;
+      this.hrac.body.velocity.x = 400;
       this.hrac.animations.play("beh");
     } else if (this.cursors.left.isDown || this.wasd.left.isDown) {
-      this.hrac.body.velocity.x = -500;
+      this.hrac.body.velocity.x = -400;
       this.hrac.animations.play("beh");
     } else if (this.wasd.down.isDown && this.hrac.body.blocked.down || this.cursors.down.isDown && this.hrac.body.blocked.down) {
       this.hrac.animations.play("skrceni");
     } else {
       this.hrac.animations.play("klid");
     }
-  },
+    
+    if (this.vlasta.body.blocked.left || this.vlasta.body.blocked.right) {
+      this.vlasta.scale.x *= -1;
+    }
 
+  },
   render: function() {
     this.game.debug.text(this.game.time.fps || 'neviem', 10, 10, "#1ec133", "Press Start 2P");
   }
