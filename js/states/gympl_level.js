@@ -72,7 +72,7 @@ GumpleRush.Gympl.prototype = {
 		stisk_p = false;
 
 		if (!this.game.device.desktop) {
-			this.game.input.onDown.add(this.celaObrazovka, this);
+			this.game.input.onDown.add(this.celaObrazovkaMobil, this);
 
 			this.button_a = this.game.add.button(524, 307, "button_a", null, this, 1, 0, 1);
 			this.button_a.fixedToCamera = true;
@@ -134,6 +134,9 @@ GumpleRush.Gympl.prototype = {
 				stisk_p = true;
 			});
 		}
+	},
+	celaObrazovkaMobil: function() {
+		this.game.scale.startFullScreen(false);
 	},
 	celaObrazovka: function() {
 		if (this.game.scale.isFullScreen) {
