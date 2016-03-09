@@ -72,6 +72,8 @@ GumpleRush.Gympl.prototype = {
 		stisk_p = false;
 
 		if (!this.game.device.desktop) {
+			this.game.input.onDown.add(this.celaObrazovka, this);
+
 			this.button_a = this.game.add.button(524, 307, "button_a", null, this, 1, 0, 1);
 			this.button_a.fixedToCamera = true;
 			this.button_a.events.onInputOver.add(function() {
