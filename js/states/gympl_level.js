@@ -4,10 +4,10 @@ var hrac = hrac || {};
 GumpleRush.Gympl = function() {};
 GumpleRush.Gympl.prototype = {
 
-		preload: function() {
-			this.time.advancedTiming = true;
-		},
-		create: function() {
+	preload: function() {
+		this.time.advancedTiming = true;
+	},
+	create: function() {
 		this.mapa = this.game.add.tilemap("gymplik");
 		this.game.stage.backgroundColor = "#0b7cb4";
 		this.mapa.addTilesetImage("final_version", "textury");
@@ -172,6 +172,12 @@ GumpleRush.Gympl.prototype = {
 			this.vlasta.scale.x *= -1;
 		}
 
+		if (this.game.input.currentPointers == 0 && !this.game.input.activePointer.isMouse) {
+			stisk_a = false;
+			stisk_b = false;
+			stisk_l = false;
+			stisk_p = false;
+		}
 	},
 	render: function() {
 		this.game.debug.text(this.game.time.fps || 'neviem', 10, 10, "#1ec133", "Press Start 2P");
