@@ -86,7 +86,7 @@ GumpleRush.Gympl.prototype = {
 				stisk_a = true;
 			});
 			this.button_a.events.onInputUp.add(function() {
-				stisk_a = true;
+				stisk_a = false;
 			});
 
 			this.button_b = this.game.add.button(622, 307, "button_b", null, this, 1, 0, 1);
@@ -101,7 +101,7 @@ GumpleRush.Gympl.prototype = {
 				stisk_b = true;
 			});
 			this.button_b.events.onInputUp.add(function() {
-				stisk_b = true;
+				stisk_b = false;
 			});
 
 			this.button_l = this.game.add.button(2, 307, "button_l", null, this, 1, 0, 1);
@@ -116,7 +116,7 @@ GumpleRush.Gympl.prototype = {
 				stisk_l = true;
 			});
 			this.button_l.events.onInputUp.add(function() {
-				stisk_l = true;
+				stisk_l = false;
 			});
 
 			this.button_p = this.game.add.button(100, 307, "button_p", null, this, 1, 0, 1);
@@ -131,7 +131,7 @@ GumpleRush.Gympl.prototype = {
 				stisk_p = true;
 			});
 			this.button_p.events.onInputUp.add(function() {
-				stisk_p = true;
+				stisk_p = false;
 			});
 		}
 	},
