@@ -20,6 +20,10 @@ GumpleRush.Preload.prototype = {
 		this.load.spritesheet("button_b", "assets/menu/button_b.png", 96, 96);
 		this.load.spritesheet("button_l", "assets/menu/button_l.png", 96, 96);
 		this.load.spritesheet("button_p", "assets/menu/button_p.png", 96, 96);
+		this.load.tilemap("honsey_kong_mapa", "assets/honsey_kong/honsey_kong.json", null, Phaser.Tilemap.TILED_JSON);
+		this.load.image("honsey_kong_dlazdice", "assets/honsey_kong/honsey_kong_dlazdice.png");
+		this.load.spritesheet("barel", "assets/predmety/honsey_kong_barel.png", 20, 20);
+		this.load.image("zebrik", "assets/predmety/honsey_kong_zebrik.png");
 
 		//načtení zvuků
 		this.game.load.audio("gaudeamus", "assets/gaudeamus.ogg");
@@ -28,6 +32,6 @@ GumpleRush.Preload.prototype = {
 		this.game.load.audio("select", "assets/select.wav");
 	},
 	create: function() {
-		this.state.start("Gympl");
+		this.state.start("Honsey_Kong");
 	}
 };
