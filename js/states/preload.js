@@ -27,6 +27,7 @@ GumpleRush.Preload.prototype = {
 
 		//načtení zvuků
 		this.game.load.audio("gaudeamus", "assets/gaudeamus.ogg");
+		this.game.load.audio("honsey_kong_hudba", "assets/honsey_kong.ogg")
 		this.game.load.audio("skok", "assets/skok.wav");
 		this.game.load.audio("hit", "assets/hit.wav");
 		this.game.load.audio("select", "assets/select.wav");

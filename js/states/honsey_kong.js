@@ -23,24 +23,25 @@ GumpleRush.Honsey_Kong.prototype = {
 			}
 		}
 
-    this.zebrik1 = this.add.sprite(540, 288, "zebrik");
-    this.zebrik2 = this.add.sprite(540, 96, "zebrik");
-    this.zebrik3 = this.add.sprite(160, 192, "zebrik");
+		this.zebrik1 = this.add.sprite(540, 288, "zebrik");
+		this.zebrik2 = this.add.sprite(540, 96, "zebrik");
+		this.zebrik3 = this.add.sprite(160, 192, "zebrik");
 
-		this.hrac = this.add.sprite(100, 0, "ruza");
+		this.hrac = this.add.sprite(100, 300, "ruza");
 		this.game.physics.arcade.enable(this.hrac);
 		this.hrac.body.gravity.y = 1000;
 		this.hrac.animations.add("beh", [2, 3], 5, true);
 		this.hrac.animations.add("klid", [0, 4], 1, true);
 		this.hrac.animations.add("skrceni", [4, 4], 1, true);
-    this.hrac.skok = -225;
-    this.hrac.rychlost = 175;
-    this.hrac.body.drag.x = 5000;
+		this.hrac.skok = -225; //-225 je tak akorát, ale při vyšších číslech má hráč vyšší šanci na přeskočení barelu
+		this.hrac.rychlost = 175;
+		this.hrac.body.drag.x = 5000;
 
-    this.barely = this.game.add.group();
-    this.barely.enableBody = true;
-    this.barely.frekvence = 5000;
-    this.barely.kontrolacasu = 0;
+		this.barely = this.game.add.group();
+		this.barely.enableBody = true;
+		this.barely.frekvence = 3000;
+		this.barely.kontrolacasu = 0;
+		this.vytvoreniNovehoBarelu();
 
 
 		this.cursors = this.game.input.keyboard.createCursorKeys();
@@ -63,81 +64,54 @@ GumpleRush.Honsey_Kong.prototype = {
 		if (!this.game.device.desktop) {
 			this.game.input.onDown.add(this.celaObrazovkaMobil, this);
 
-			this.button_a = this.game.add.button(524, 307, "button_a", null, this, 1, 0, 1);
+			this.button_a = this.game.add.button(524, 307, "button_a", null, this, 1, 0, 1, 0);
 			this.button_a.fixedToCamera = true;
-			this.button_a.events.onInputOver.add(function() {
-				stisk_a = true;
-			});
-			this.button_a.events.onInputOut.add(function() {
-				stisk_a = false;
-			});
-			this.button_a.events.onInputDown.add(function() {
-				stisk_a = true;
-			});
-			this.button_a.events.onInputUp.add(function() {
-				stisk_a = false;
-			});
+			this.button_a.events.onInputOver.add(function() { stisk_a = true; });
+			this.button_a.events.onInputOut.add(function() { stisk_a = false; });
+			this.button_a.events.onInputDown.add(function() { stisk_a = true; });
+			this.button_a.events.onInputUp.add(function() { stisk_a = false; });
 
-			this.button_b = this.game.add.button(622, 307, "button_b", null, this, 1, 0, 1);
+			this.button_b = this.game.add.button(622, 307, "button_b", null, this, 1, 0, 1, 0);
 			this.button_b.fixedToCamera = true;
-			this.button_b.events.onInputOver.add(function() {
-				stisk_b = true;
-			});
-			this.button_b.events.onInputOut.add(function() {
-				stisk_b = false;
-			});
-			this.button_b.events.onInputDown.add(function() {
-				stisk_b = true;
-			});
-			this.button_b.events.onInputUp.add(function() {
-				stisk_b = false;
-			});
+			this.button_b.events.onInputOver.add(function() { stisk_b = true; });
+			this.button_b.events.onInputOut.add(function() { stisk_b = false; });
+			this.button_b.events.onInputDown.add(function() { stisk_b = true; });
+			this.button_b.events.onInputUp.add(function() { stisk_b = false; });
 
-			this.button_l = this.game.add.button(2, 307, "button_l", null, this, 1, 0, 1);
+			this.button_l = this.game.add.button(2, 307, "button_l", null, this, 1, 0, 1, 0);
 			this.button_l.fixedToCamera = true;
-			this.button_l.events.onInputOver.add(function() {
-				stisk_l = true;
-			});
-			this.button_l.events.onInputOut.add(function() {
-				stisk_l = false;
-			});
-			this.button_l.events.onInputDown.add(function() {
-				stisk_l = true;
-			});
-			this.button_l.events.onInputUp.add(function() {
-				stisk_l = false;
-			});
+			this.button_l.events.onInputOver.add(function() { stisk_l = true; });
+			this.button_l.events.onInputOut.add(function() { stisk_l = false; });
+			this.button_l.events.onInputDown.add(function() { stisk_l = true; });
+			this.button_l.events.onInputUp.add(function() { stisk_l = false; });
 
-			this.button_p = this.game.add.button(100, 307, "button_p", null, this, 1, 0, 1);
+			this.button_p = this.game.add.button(100, 307, "button_p", null, this, 1, 0, 1, 0);
 			this.button_p.fixedToCamera = true;
-			this.button_p.events.onInputOver.add(function() {
-				stisk_p = true;
-			});
-			this.button_p.events.onInputOut.add(function() {
-				stisk_p = false;
-			});
-			this.button_p.events.onInputDown.add(function() {
-				stisk_p = true;
-			});
-			this.button_p.events.onInputUp.add(function() {
-				stisk_p = false;
-			});
+			this.button_p.events.onInputOver.add(function() { stisk_p = true; });
+			this.button_p.events.onInputOut.add(function() { stisk_p = false; });
+			this.button_p.events.onInputDown.add(function() { stisk_p = true; });
+			this.button_p.events.onInputUp.add(function() { stisk_p = false; });
 		}
-	},
-  vytvoreniNovehoBarelu: function() {
-    this.barel = this.barely.create(150, 20, "barel");
-    this.barel.body.gravity.y = 1000;
-    this.barel.animations.add("kutaleni", [0, 1, 2, 3], 5, true);
-    this.barel.animations.play("kutaleni");
-    this.barel.body.velocity.x = 100;
-    this.barel.body.bounce.x = 1;
-    this.barel.body.bounce.y = 1;
-    this.barel.anchor.setTo(0.5, 0.5);
-    this.barel.outOfBoundsKill = true;
-    this.barel.body.drag.y = 600;
-    this.barely.kontrolacasu = this.game.time.now;
 
-  },
+		this.hudba = this.game.add.audio("honsey_kong_hudba");
+		this.hudba.loop = true;
+		this.hudba.play();
+
+	},
+	vytvoreniNovehoBarelu: function() {
+		this.barel = this.barely.create(150, 20, "barel");
+		this.barel.body.gravity.y = 1000;
+		this.barel.animations.add("kutaleni", [0, 1, 2, 3], 5, true);
+		this.barel.animations.play("kutaleni");
+		this.barel.body.velocity.x = 100;
+		this.barel.body.bounce.x = 1;
+		this.barel.body.bounce.y = 1;
+		this.barel.anchor.setTo(0.5, 0.5);
+		this.barel.outOfBoundsKill = true;
+		this.barel.body.drag.y = 800;
+		this.barely.kontrolacasu = this.game.time.now;
+
+	},
 	celaObrazovkaMobil: function() {
 		this.game.scale.startFullScreen(false);
 	},
@@ -148,15 +122,15 @@ GumpleRush.Honsey_Kong.prototype = {
 			this.game.scale.startFullScreen(false);
 		}
 	},
-  testZebriku: function(a, b) {
-    necoA = a.getBounds();
-    necoB = b.getBounds();
+	testZebriku: function(a, b) {
+		necoA = a.getBounds();
+		necoB = b.getBounds();
 
-    return Phaser.Rectangle.intersects(necoA, necoB);
-  },
+		return Phaser.Rectangle.intersects(necoA, necoB);
+	},
 	update: function() {
 		this.game.physics.arcade.collide(this.hrac, this.kolize);
-    this.game.physics.arcade.collide(this.barely, this.kolize);
+		this.game.physics.arcade.collide(this.barely, this.kolize);
 
 		if ((this.wasd.up.isDown || this.cursors.up.isDown || stisk_a) && this.hrac.body.blocked.down) {
 			this.hrac.body.velocity.y = this.hrac.skok;
@@ -174,13 +148,13 @@ GumpleRush.Honsey_Kong.prototype = {
 			this.hrac.animations.play("klid");
 		}
 
-    if ((this.testZebriku(this.hrac, this.zebrik1) ||  this.testZebriku(this.hrac, this.zebrik2) || this.testZebriku(this.hrac, this.zebrik3)) && (this.wasd.up.isDown || this.cursors.up.isDown || stisk_a)) {
-      this.hrac.body.velocity.y = -50;
-    }
+		if ((this.testZebriku(this.hrac, this.zebrik1) || this.testZebriku(this.hrac, this.zebrik2) || this.testZebriku(this.hrac, this.zebrik3)) && (this.wasd.up.isDown || this.cursors.up.isDown || stisk_a)) {
+			this.hrac.body.velocity.y = -50;
+		}
 
-    if (this.game.time.now - this.barely.kontrolacasu > this.barely.frekvence) {
-      this.vytvoreniNovehoBarelu();
-    }
+		if (this.game.time.now - this.barely.kontrolacasu > this.barely.frekvence) {
+			this.vytvoreniNovehoBarelu();
+		}
 
 		if (this.game.input.currentPointers == 0 && !this.game.input.activePointer.isMouse) {
 			stisk_a = false;
