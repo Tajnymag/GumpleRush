@@ -56,7 +56,7 @@ GumpleRush.Gympl.prototype = {
 		this.vlasta.anchor.setTo(0.5, 0.5);
 
 		this.detektor1 = this.add.sprite(400, 603, "detektor");
-		this.detektor1.alpha = 0.5; //ve finální verzi nastavit na 0
+		this.detektor1.alpha = 0; //ve finální verzi nastavit na 0
 		this.game.physics.arcade.enable(this.detektor1);
 
 		this.gaudeamus = this.game.add.audio("gaudeamus");
