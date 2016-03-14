@@ -37,7 +37,7 @@ GumpleRush.Honsey_Kong.prototype = {
 		this.hrac.animations.add("beh", [2, 3], 5, true);
 		this.hrac.animations.add("klid", [0, 4], 1, true);
 		this.hrac.animations.add("skrceni", [4, 4], 1, true);
-		this.hrac.skok = -225; //-225 je tak akorát, ale při vyšších číslech má hráč vyšší šanci na přeskočení barelu
+		this.hrac.skok = -255; //-225 je tak akorát, ale při vyšších číslech má hráč vyšší šanci na přeskočení barelu
 		this.hrac.rychlost = 175;
 		this.hrac.body.drag.x = 5000;
 		this.hrac.zivoty = 3;
@@ -109,6 +109,8 @@ GumpleRush.Honsey_Kong.prototype = {
 		this.hudba.loop = true;
 		this.hudba.play();
 
+		this.hit = this.game.add.audio("hit");
+
 	},
 	vytvoreniNovehoBarelu: function() {
 		this.barel = this.barely.create(150, 20, "barel");
@@ -167,6 +169,7 @@ GumpleRush.Honsey_Kong.prototype = {
 
 		if (this.game.physics.arcade.overlap(this.hrac, this.barely) && (this.game.time.now - this.srdicka.kontrolacasu > this.srdicka.frekvence)) {
 				this.hrac.zivoty = this.hrac.zivoty - 1;
+				this.hit.play();
 				this.cropRect = new Phaser.Rectangle(0, 0, (this.hrac.zivoty / 3) * 50, 15);
 				this.srdicka.crop(this.cropRect);
 				this.srdicka.updateCrop();
@@ -178,6 +181,11 @@ GumpleRush.Honsey_Kong.prototype = {
 			stisk_b = false;
 			stisk_l = false;
 			stisk_p = false;
+		}
+
+		if (this.hrac.zivoty < 1) {
+			this.hudba.stop();
+			this.game.state.start("Honsey_Kong");
 		}
 	},
 	render: function() {
