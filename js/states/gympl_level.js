@@ -60,6 +60,7 @@ GumpleRush.Gympl.prototype = {
 
 		this.gaudeamus = this.game.add.audio("gaudeamus");
 		this.gaudeamus.loop = true;
+		this.gaudeamus.volume = 0.4;
 		this.gaudeamus.play();
 
 		this.cursors = this.game.input.keyboard.createCursorKeys();
@@ -70,6 +71,7 @@ GumpleRush.Gympl.prototype = {
 			right: this.game.input.keyboard.addKey(Phaser.Keyboard.D),
 		};
 		this.skok = this.game.add.audio("skok");
+		this.skok.volume = 0.6;
 
 		this.klavesaF = this.game.input.keyboard.addKey(Phaser.Keyboard.F);
 		this.klavesaF.onDown.add(this.celaObrazovka, this);
@@ -147,7 +149,7 @@ GumpleRush.Gympl.prototype = {
 		} else {
 			this.hrac.animations.play("klid");
 		}
-		
+
 		if (this.testPrekryti(this.detektor1, this.hrac) && (this.wasd.down.isDown || this.cursors.down.isDown || stisk_b)) {
 			this.gaudeamus.stop();
 			this.game.state.start("Honsey_Kong");

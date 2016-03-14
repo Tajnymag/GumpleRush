@@ -66,6 +66,7 @@ GumpleRush.Honsey_Kong.prototype = {
 			right: this.game.input.keyboard.addKey(Phaser.Keyboard.D),
 		};
 		this.skok = this.game.add.audio("skok");
+		this.skok.volume = 0.6;
 
 		this.klavesaF = this.game.input.keyboard.addKey(Phaser.Keyboard.F);
 		this.klavesaF.onDown.add(this.celaObrazovka, this);
