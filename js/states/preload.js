@@ -24,14 +24,17 @@ GumpleRush.Preload.prototype = {
 		this.load.image("honsey_kong_dlazdice", "assets/honsey_kong/honsey_kong_dlazdice.png");
 		this.load.spritesheet("barel", "assets/predmety/honsey_kong_barel.png", 20, 20);
 		this.load.image("zebrik", "assets/predmety/honsey_kong_zebrik.png");
+		this.load.image("detektor", "assets/predmety/detektor.png");
 
 		//načtení zvuků
 		this.game.load.audio("gaudeamus", "assets/gaudeamus.ogg");
+		this.game.load.audio("honsey_kong_hudba", "assets/honsey_kong.ogg")
 		this.game.load.audio("skok", "assets/skok.wav");
 		this.game.load.audio("hit", "assets/hit.wav");
 		this.game.load.audio("select", "assets/select.wav");
 	},
 	create: function() {
-		this.state.start("Honsey_Kong");
+		//this.state.start("Honsey_Kong");
+		this.state.start("Gympl");
 	}
 };
