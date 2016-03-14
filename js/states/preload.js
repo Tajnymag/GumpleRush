@@ -25,6 +25,7 @@ GumpleRush.Preload.prototype = {
 		this.load.spritesheet("barel", "assets/predmety/honsey_kong_barel.png", 20, 20);
 		this.load.image("zebrik", "assets/predmety/honsey_kong_zebrik.png");
 		this.load.image("detektor", "assets/predmety/detektor.png");
+		this.game.load.image("hearts", "assets/honsey_kong/pixel_hearts.png");
 
 		//načtení zvuků
 		this.game.load.audio("gaudeamus", "assets/gaudeamus.ogg");

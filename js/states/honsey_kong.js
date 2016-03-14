@@ -6,8 +6,6 @@ GumpleRush.Honsey_Kong.prototype = {
 
 	preload: function() {
 		this.time.advancedTiming = true;
-
-		this.game.load.image("hearts", "assets/honsey_kong/pixel_hearts.png");
 	},
 	create: function() {
 
@@ -42,6 +40,7 @@ GumpleRush.Honsey_Kong.prototype = {
 		this.hrac.skok = -225; //-225 je tak akorát, ale při vyšších číslech má hráč vyšší šanci na přeskočení barelu
 		this.hrac.rychlost = 175;
 		this.hrac.body.drag.x = 5000;
+		this.hrac.zivoty = 3;
 
 		this.barely = this.game.add.group();
 		this.barely.enableBody = true;
@@ -101,7 +100,10 @@ GumpleRush.Honsey_Kong.prototype = {
 		}
 
 
-		lives = this.game.add.image(this.game.world.width - 70, 10, "hearts");
+		this.srdicka = this.game.add.image(this.game.world.width - 70, 10, "hearts");
+		this.srdicka.cropEnabled = true;
+		this.srdicka.kontrolacasu = 0;
+		this.srdicka.frekvence = 1000;
 
 		this.hudba = this.game.add.audio("honsey_kong_hudba");
 		this.hudba.loop = true;
@@ -163,8 +165,12 @@ GumpleRush.Honsey_Kong.prototype = {
 			this.vytvoreniNovehoBarelu();
 		}
 
-		if (this.game.physics.arcade.overlap(this.hrac, this.barely)) {
-				this.hrac.lives = this.hrac.lives - 1;
+		if (this.game.physics.arcade.overlap(this.hrac, this.barely) && (this.game.time.now - this.srdicka.kontrolacasu > this.srdicka.frekvence)) {
+				this.hrac.zivoty = this.hrac.zivoty - 1;
+				this.cropRect = new Phaser.Rectangle(0, 0, (this.hrac.zivoty / 3) * 50, 15);
+				this.srdicka.crop(this.cropRect);
+				this.srdicka.updateCrop();
+				this.srdicka.kontrolacasu = this.game.time.now;
 		}
 
 		if (this.game.input.currentPointers == 0 && !this.game.input.activePointer.isMouse) {
