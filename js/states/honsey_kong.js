@@ -2,8 +2,6 @@ var GumpleRush = GumpleRush || {};
 var hrac = hrac || {};
 var lives;
 var health;
-var style = { font: '15px Arial', fill: '#fff' };
-var textLives;
 
 GumpleRush.Honsey_Kong = function() {};
 GumpleRush.Honsey_Kong.prototype = {
@@ -34,13 +32,9 @@ GumpleRush.Honsey_Kong.prototype = {
 		this.zebrik2 = this.add.sprite(540, 96, "zebrik");
 		this.zebrik3 = this.add.sprite(160, 192, "zebrik");
 
-<<<<<<< HEAD
 		this.lives = this.game.add.group();
 
-		this.hrac = this.add.sprite(100, 0, "ruza");
-=======
 		this.hrac = this.add.sprite(100, 300, "ruza");
->>>>>>> origin/gh-pages
 		this.game.physics.arcade.enable(this.hrac);
 		this.hrac.lives = 3;
 		this.hrac.body.gravity.y = 1000;
@@ -108,11 +102,9 @@ GumpleRush.Honsey_Kong.prototype = {
 			this.button_p.events.onInputUp.add(function() { stisk_p = false; });
 		}
 
-<<<<<<< HEAD
+
 		lives = this.game.add.image(this.game.world.width - 70, 10, "hearts");
 
-		//this.textLives = this.game.add.text(this.game.world.width - 120, 10, "Lives : ", style);
-=======
 		this.hudba = this.game.add.audio("honsey_kong_hudba");
 		this.hudba.loop = true;
 		this.hudba.play();
@@ -130,7 +122,6 @@ GumpleRush.Honsey_Kong.prototype = {
 		this.barel.outOfBoundsKill = true;
 		this.barel.body.drag.y = 800;
 		this.barely.kontrolacasu = this.game.time.now;
->>>>>>> origin/gh-pages
 
 	},
 	celaObrazovkaMobil: function() {
