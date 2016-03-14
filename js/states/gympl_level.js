@@ -39,7 +39,7 @@ GumpleRush.Gympl.prototype = {
 		this.hrac.animations.add("skrceni", [4, 4], 1, true);
 		this.hrac.body.drag.x = 5000;
 
-		this.game.camera.follow(this.hrac);
+		this.game.camera.follow(this.hrac, Phaser.Camera.FOLLOW_PLATFORMER);
 
 		//stvoření Vlasty
 		this.vlasta = this.add.sprite(500, 600, "vlasta");
@@ -143,7 +143,7 @@ GumpleRush.Gympl.prototype = {
 		} else {
 			this.hrac.animations.play("klid");
 		}
-
+		
 		if (this.testPrekryti(this.detektor1, this.hrac) && (this.wasd.down.isDown || this.cursors.down.isDown || stisk_b)) {
 			this.gaudeamus.stop();
 			this.game.state.start("Honsey_Kong");
