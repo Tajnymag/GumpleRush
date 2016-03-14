@@ -1,7 +1,5 @@
 var GumpleRush = GumpleRush || {};
 var hrac = hrac || {};
-var lives;
-var health;
 
 GumpleRush.Honsey_Kong = function() {};
 GumpleRush.Honsey_Kong.prototype = {
@@ -31,12 +29,12 @@ GumpleRush.Honsey_Kong.prototype = {
 		this.zebrik1 = this.add.sprite(540, 288, "zebrik");
 		this.zebrik2 = this.add.sprite(540, 96, "zebrik");
 		this.zebrik3 = this.add.sprite(160, 192, "zebrik");
-
-		this.lives = this.game.add.group();
+		this.game.physics.arcade.enable(this.zebrik1);
+		this.game.physics.arcade.enable(this.zebrik2);
+		this.game.physics.arcade.enable(this.zebrik3);
 
 		this.hrac = this.add.sprite(100, 300, "ruza");
 		this.game.physics.arcade.enable(this.hrac);
-		this.hrac.lives = 3;
 		this.hrac.body.gravity.y = 1000;
 		this.hrac.animations.add("beh", [2, 3], 5, true);
 		this.hrac.animations.add("klid", [0, 4], 1, true);
@@ -135,10 +133,7 @@ GumpleRush.Honsey_Kong.prototype = {
 		}
 	},
 	testZebriku: function(a, b) {
-		necoA = a.getBounds();
-		necoB = b.getBounds();
-
-		return Phaser.Rectangle.intersects(necoA, necoB);
+		return this.game.physics.arcade.overlap(a, b);
 	},
 	update: function() {
 		this.game.physics.arcade.collide(this.hrac, this.kolize);

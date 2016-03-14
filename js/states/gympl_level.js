@@ -57,6 +57,7 @@ GumpleRush.Gympl.prototype = {
 
 		this.detektor1 = this.add.sprite(400, 603, "detektor");
 		this.detektor1.alpha = 0.5; //ve finální verzi nastavit na 0
+		this.game.physics.arcade.enable(this.detektor1);
 
 		this.gaudeamus = this.game.add.audio("gaudeamus");
 		this.gaudeamus.loop = true;
@@ -123,12 +124,6 @@ GumpleRush.Gympl.prototype = {
 			this.game.scale.startFullScreen(false);
 		}
 	},
-	testPrekryti: function(a, b) {
-		necoA = a.getBounds();
-		necoB = b.getBounds();
-
-		return Phaser.Rectangle.intersects(necoA, necoB);
-	},
 	update: function() {
 		this.game.physics.arcade.collide(this.hrac, this.kolize);
 		this.game.physics.arcade.collide(this.hrac, this.vzhled);
@@ -150,7 +145,7 @@ GumpleRush.Gympl.prototype = {
 			this.hrac.animations.play("klid");
 		}
 
-		if (this.testPrekryti(this.detektor1, this.hrac) && (this.wasd.down.isDown || this.cursors.down.isDown || stisk_b)) {
+		if (this.game.physics.arcade.overlap(this.hrac, this.detektor1) && (this.wasd.down.isDown || this.cursors.down.isDown || stisk_b)) {
 			this.gaudeamus.stop();
 			this.game.state.start("Honsey_Kong");
 		}
