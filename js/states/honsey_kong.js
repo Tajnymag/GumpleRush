@@ -1,13 +1,20 @@
 var GumpleRush = GumpleRush || {};
 var hrac = hrac || {};
+var lives;
+var health;
+var style = { font: '15px Arial', fill: '#fff' };
+var textLives;
 
 GumpleRush.Honsey_Kong = function() {};
 GumpleRush.Honsey_Kong.prototype = {
 
 	preload: function() {
 		this.time.advancedTiming = true;
+
+		this.game.load.image("hearts", "assets/honsey_kong/pixel_hearts.png");
 	},
 	create: function() {
+
 		this.mapa = this.game.add.tilemap("honsey_kong_mapa");
 		this.game.stage.backgroundColor = "#000000";
 		this.mapa.addTilesetImage("tramy", "honsey_kong_dlazdice");
@@ -27,8 +34,11 @@ GumpleRush.Honsey_Kong.prototype = {
     this.zebrik2 = this.add.sprite(540, 96, "zebrik");
     this.zebrik3 = this.add.sprite(160, 192, "zebrik");
 
+		this.lives = this.game.add.group();
+
 		this.hrac = this.add.sprite(100, 0, "ruza");
 		this.game.physics.arcade.enable(this.hrac);
+		this.hrac.lives = 3;
 		this.hrac.body.gravity.y = 1000;
 		this.hrac.animations.add("beh", [2, 3], 5, true);
 		this.hrac.animations.add("klid", [0, 4], 1, true);
@@ -123,6 +133,11 @@ GumpleRush.Honsey_Kong.prototype = {
 				stisk_p = false;
 			});
 		}
+
+		lives = this.game.add.image(this.game.world.width - 70, 10, "hearts");
+
+		//this.textLives = this.game.add.text(this.game.world.width - 120, 10, "Lives : ", style);
+
 	},
   vytvoreniNovehoBarelu: function() {
     this.barel = this.barely.create(150, 20, "barel");
@@ -181,6 +196,10 @@ GumpleRush.Honsey_Kong.prototype = {
     if (this.game.time.now - this.barely.kontrolacasu > this.barely.frekvence) {
       this.vytvoreniNovehoBarelu();
     }
+
+		if (this.game.physics.arcade.overlap(this.hrac, this.barely)) {
+				this.hrac.lives = this.hrac.lives - 1;
+		}
 
 		if (this.game.input.currentPointers == 0 && !this.game.input.activePointer.isMouse) {
 			stisk_a = false;

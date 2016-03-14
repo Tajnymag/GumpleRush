@@ -6,8 +6,12 @@ GumpleRush.Gympl.prototype = {
 
 	preload: function() {
 		this.time.advancedTiming = true;
+		this.game.load.image("background", "assets/gumple/gymplik_one.png");
 	},
 	create: function() {
+
+		this.game.add.sprite(0, 0, "background");
+
 		this.mapa = this.game.add.tilemap("gymplik");
 		this.game.stage.backgroundColor = "#0b7cb4";
 		this.mapa.addTilesetImage("final_version", "textury");
