@@ -44,9 +44,8 @@ GumpleRush.Honsey_Kong.prototype = {
 
 		this.barely = this.game.add.group();
 		this.barely.enableBody = true;
-		this.barely.frekvence = 3000;
-		this.barely.kontrolacasu = 0;
 		this.vytvoreniNovehoBarelu();
+		this.game.time.events.loop(3000, this.vytvoreniNovehoBarelu, this);
 
 
 		this.cursors = this.game.input.keyboard.createCursorKeys();
@@ -123,8 +122,6 @@ GumpleRush.Honsey_Kong.prototype = {
 		this.barel.anchor.setTo(0.5, 0.5);
 		this.barel.outOfBoundsKill = true;
 		this.barel.body.drag.y = 800;
-		this.barely.kontrolacasu = this.game.time.now;
-
 	},
 	celaObrazovkaMobil: function() {
 		this.game.scale.startFullScreen(false);
@@ -161,10 +158,6 @@ GumpleRush.Honsey_Kong.prototype = {
 
 		if ((this.testZebriku(this.hrac, this.zebrik1) || this.testZebriku(this.hrac, this.zebrik2) || this.testZebriku(this.hrac, this.zebrik3)) && (this.wasd.up.isDown || this.cursors.up.isDown || stisk_a)) {
 			this.hrac.body.velocity.y = -50;
-		}
-
-		if (this.game.time.now - this.barely.kontrolacasu > this.barely.frekvence) {
-			this.vytvoreniNovehoBarelu();
 		}
 
 		if (this.game.physics.arcade.overlap(this.hrac, this.barely) && (this.game.time.now - this.srdicka.kontrolacasu > this.srdicka.frekvence)) {
