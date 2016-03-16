@@ -30,9 +30,8 @@ GumpleRush.Preload.prototype = {
     this.load.image("hearts", "assets/honsey_kong/pixel_hearts.png");
     this.load.image("detektor_vertikalni", "assets/predmety/detektor_vert.png");
 
-    //načtení zvuků
-    this.game.load.audio("gaudeamus", "assets/gaudeamus.ogg");
-    this.game.load.audio("honsey_kong_hudba", "assets/honsey_kong.ogg");
+    this.game.load.audio("gaudeamus", ["assets/gaudeamus.ogg", "assets/gaudeamus.mp3"]);
+    this.game.load.audio("honsey_kong_hudba", ["assets/honsey_kong.ogg", "assets/honsey_kong.mp3"]);
     this.game.load.audio("skok", "assets/skok.wav");
     this.game.load.audio("hit", "assets/hit.wav");
     this.game.load.audio("select", "assets/select.wav");
