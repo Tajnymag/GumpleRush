@@ -5,7 +5,7 @@ GumpleRush.Honsey_Kong = function() {};
 GumpleRush.Honsey_Kong.prototype = {
 
   preload: function() {
-    this.time.advancedTiming = true;
+    this.game.time.advancedTiming = true;
   },
   create: function() {
 
@@ -24,9 +24,9 @@ GumpleRush.Honsey_Kong.prototype = {
       }
     }
 
-    this.zebrik1 = this.add.sprite(540, 288, "zebrik");
-    this.zebrik2 = this.add.sprite(540, 96, "zebrik");
-    this.zebrik3 = this.add.sprite(160, 192, "zebrik");
+    this.zebrik1 = this.game.add.sprite(540, 288, "zebrik");
+    this.zebrik2 = this.game.add.sprite(540, 96, "zebrik");
+    this.zebrik3 = this.game.add.sprite(160, 192, "zebrik");
     this.game.physics.arcade.enable(this.zebrik1);
     this.game.physics.arcade.enable(this.zebrik2);
     this.game.physics.arcade.enable(this.zebrik3);
@@ -139,7 +139,7 @@ GumpleRush.Honsey_Kong.prototype = {
   uberHraciZivotu(x) {
     this.hrac.zivoty = this.hrac.zivoty - x;
     this.hit.play();
-    window.navigator.vibrate(150);
+    navigator.vibrate(150);
     this.hrac.body.velocity.y = -100;
     this.cropRect = new Phaser.Rectangle(0, 0, (this.hrac.zivoty / 3) * 50, 15);
     this.srdicka.crop(this.cropRect);

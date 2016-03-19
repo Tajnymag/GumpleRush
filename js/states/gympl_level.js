@@ -35,7 +35,7 @@ GumpleRush.Gympl.prototype = {
     }
 
     //stvoření hráče
-    this.hrac = this.add.sprite(300, 600, "ruza");
+    this.hrac = this.game.add.sprite(300, 600, "ruza");
     this.game.physics.arcade.enable(this.hrac);
     this.hrac.body.gravity.y = 1000;
     this.hrac.animations.add("beh", [2, 3], 5, true);
@@ -54,7 +54,7 @@ GumpleRush.Gympl.prototype = {
     this.veronika.body.gravity.y = 1000;
     this.veronika.anchor.setTo(0.5, 0.5);
 
-    this.vlasta = this.add.sprite(500, 600, "vlasta");
+    this.vlasta = this.game.add.sprite(500, 600, "vlasta");
     this.game.physics.arcade.enable(this.vlasta);
     this.vlasta.body.gravity.y = 1000;
     this.vlasta.animations.add("beh", [0, 1], 5, true);
