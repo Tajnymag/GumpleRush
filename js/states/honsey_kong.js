@@ -139,12 +139,15 @@ GumpleRush.Honsey_Kong.prototype = {
   uberHraciZivotu(x) {
     this.hrac.zivoty = this.hrac.zivoty - x;
     this.hit.play();
-    navigator.vibrate(150);
     this.hrac.body.velocity.y = -100;
+    if ("vibrate" in navigator) {
+      navigator.vibrate(150);
+    }
     this.cropRect = new Phaser.Rectangle(0, 0, (this.hrac.zivoty / 3) * 50, 15);
     this.srdicka.crop(this.cropRect);
     this.srdicka.updateCrop();
     this.srdicka.kontrolacasu = this.game.time.now;
+
   },
   update: function() {
     this.game.physics.arcade.collide(this.hrac, this.kolize);
