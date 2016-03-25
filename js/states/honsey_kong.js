@@ -136,13 +136,13 @@ GumpleRush.Honsey_Kong.prototype = {
   testZebriku: function(a, b) {
     return this.game.physics.arcade.overlap(a, b);
   },
-  uberHraciZivotu(x) {
+  uberHraciZivotu: function(x) {
     this.hrac.zivoty = this.hrac.zivoty - x;
     this.hit.play();
     this.hrac.body.velocity.y = -100;
-    if ("vibrate" in navigator) {
-      navigator.vibrate(150);
-    }
+    /*if ("vibrate" in navigator) {
+      navigator.vibrate(150);         TODO: NA iOS zasekne prohlížeč
+    } */
     this.cropRect = new Phaser.Rectangle(0, 0, (this.hrac.zivoty / 3) * 50, 15);
     this.srdicka.crop(this.cropRect);
     this.srdicka.updateCrop();
