@@ -51,6 +51,7 @@ GumpleRush.Gympl.prototype = {
     this.veronika.animations.add("beh", [1, 2], 5, true);
     this.veronika.animations.play("beh");
     this.veronika.body.velocity.x = 30;
+    this.veronika.body.bounce.x = 1;
     this.veronika.body.gravity.y = 1000;
     this.veronika.anchor.setTo(0.5, 0.5);
 
@@ -66,11 +67,6 @@ GumpleRush.Gympl.prototype = {
     this.detektor1 = this.add.sprite(400, 603, "detektor");
     this.detektor1.alpha = 0; //ve finální verzi nastavit na 0
     this.game.physics.arcade.enable(this.detektor1);
-
-    this.detektor_vertikalni = this.add.sprite(910, 200, "detektor_vertikalni");
-    this.detektor_vertikalni.alpha = 0.5;
-    this.game.physics.arcade.enable(this.detektor_vertikalni);
-    this.detektor_vertikalni.body.moves = false;
 
     this.gaudeamus = this.game.add.audio("gaudeamus");
     this.gaudeamus.loop = true;
@@ -162,6 +158,13 @@ GumpleRush.Gympl.prototype = {
     if (this.game.physics.arcade.overlap(this.hrac, this.detektor1) && (this.wasd.down.isDown || this.cursors.down.isDown || stisk_b)) {
       this.gaudeamus.stop();
       this.game.state.start("Honsey_Kong");
+    }
+
+    if (this.veronika.x >= 900) {
+      this.veronika.body.velocity.x = -30;
+      this.veronika.scale.x *= -1;
+    } else if (this.veronika.body.blocked.left) {
+      this.veronika.scale.x *= -1;
     }
 
     if (this.vlasta.body.blocked.left || this.vlasta.body.blocked.right) {
