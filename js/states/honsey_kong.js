@@ -140,9 +140,11 @@ GumpleRush.Honsey_Kong.prototype = {
     this.hrac.zivoty = this.hrac.zivoty - x;
     this.hit.play();
     this.hrac.body.velocity.y = -100;
-    /*if ("vibrate" in navigator) {
-      navigator.vibrate(150);         TODO: NA iOS zasekne prohlížeč
-    } */
+    try {
+      navigator.vibrate(150);
+    } catch (e) {
+      console.log("Tvůj prohlížeč nepodporuje Vibration API");
+    }
     this.cropRect = new Phaser.Rectangle(0, 0, (this.hrac.zivoty / 3) * 50, 15);
     this.srdicka.crop(this.cropRect);
     this.srdicka.updateCrop();
