@@ -21,7 +21,6 @@
   <h1>Gümple Rush</h1>
   <iframe id="hra" frameBorder="0" scrolling="no" height="576" width="1024" src="hra.html" allowfullscreen style="display: block;margin: auto"></iframe>
   <script>
-
     //detekce mobilu
     if (typeof window.orientation !== 'undefined') {
       if (confirm("Jste-li na mobilu, doporučujeme použít naši mobilní verzi hry.\nChcete na ni přejít?") == true) {
@@ -35,21 +34,21 @@
       var hodiny = ted.getHours();
 
       if (hodiny >= 3 && hodiny <= 5) {
-        document.body.style.background = "#243E1C url(assets/pozadi/01-Morning.png) no-repeat center center";
+        document.body.style.background = "#315628 url(https://alanwright.github.io/BitDay/img/1.png) no-repeat center center";
       } else if (hodiny <= 8) {
-        document.body.style.background = "#457938 url(assets/pozadi/02-Late-Morning.png) no-repeat center center";
+        document.body.style.background = "#4C873E url(https://alanwright.github.io/BitDay/img/2.png) no-repeat center center";
       } else if (hodiny <= 11) {
-        document.body.style.background = "#73CD5F url(assets/pozadi/03-Afternoon.png) no-repeat center center";
+        document.body.style.background = "#73CD5F url(https://alanwright.github.io/BitDay/img/3.png) no-repeat center center";
       } else if (hodiny <= 15) {
-        document.body.style.background = "#3A652E url(assets/pozadi/04-Late-Afternoon.png) no-repeat center center";
+        document.body.style.background = "#3D6B31 url(https://alanwright.github.io/BitDay/img/4.png) no-repeat center center";
       } else if (hodiny <= 17) {
-        document.body.style.background = "#203A1A url(assets/pozadi/05-Evening.png) no-repeat center center";
+        document.body.style.background = "#284620 url(https://alanwright.github.io/BitDay/img/5.png) no-repeat center center";
       } else if (hodiny <= 19) {
-        document.body.style.background = "#1C071C url(assets/pozadi/06-Late-Evening.png) no-repeat center center";
+        document.body.style.background = "#1C071C url(https://alanwright.github.io/BitDay/img/6.png) no-repeat center center";
       } else if (hodiny <= 21) {
-        document.body.style.background = "#1C071C url(assets/pozadi/07-Night.png) no-repea center center";
+        document.body.style.background = "#07060B url(https://alanwright.github.io/BitDay/img/7.png) no-repea center center";
       } else {
-        document.body.style.background = "#08030A url(assets/pozadi/08-Late-Night.png) no-repeat center center";
+        document.body.style.background = "#0B090E url(https://alanwright.github.io/BitDay/img/8.png) no-repeat center center";
       }
       document.body.style.backgroundSize = "cover";
     }
