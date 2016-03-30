@@ -27,3 +27,13 @@ GumpleRush.game.nacteniGamepadu = function() {
   this.button_p.events.onInputDown.add(function() { stisk_p = true; });
   this.button_p.events.onInputUp.add(function() { stisk_p = false; });
 };
+
+GumpleRush.game.nastaveniKolize = function(jmeno_vrstvy, zadane_dlazdice, left, right, top, bottom) {
+  this.seznam_dlazdic_kolize = jmeno_vrstvy.getTiles(0, 0, GumpleRush.game.world.width, GumpleRush.game.world.height);
+  this.pole = zadane_dlazdice;
+  for (var i = 0; i < this.seznam_dlazdic_kolize.length; i++) {
+    if (this.pole.indexOf(this.seznam_dlazdic_kolize[i].index) !== -1) {
+      this.seznam_dlazdic_kolize[i].setCollision(left, right, top, bottom);
+    }
+  }
+};

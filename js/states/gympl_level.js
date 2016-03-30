@@ -16,23 +16,11 @@ GumpleRush.Gympl.prototype = {
     this.game.stage.backgroundColor = "#0b7cb4";
     this.mapa.addTilesetImage("final_version", "textury");
 
-    this.vzhled = this.mapa.createLayer("vzhled");
     this.kolize = this.mapa.createLayer("kolize");
     this.mapa.setCollisionBetween(1, 100000, true, "kolize");
     this.game.world.setBounds(0, 0, 1200, 720);
 
-    this.seznam_dlazdic_vzhledu = this.vzhled.getTiles(0, 0, this.game.world.width, this.game.world.height);
-    for (var i = 0; i < this.seznam_dlazdic_vzhledu.length; i++) {
-      if (this.seznam_dlazdic_vzhledu[i].index == 49 || this.seznam_dlazdic_vzhledu[i].index == 48) {
-        this.seznam_dlazdic_vzhledu[i].setCollision(false, false, true, false); // left, right, top, bottom
-      }
-    }
-    this.seznam_dlazdic_kolize = this.kolize.getTiles(0, 0, this.game.world.width, this.game.world.height);
-    for (var i = 0; i < this.seznam_dlazdic_kolize.length; i++) {
-      if (this.seznam_dlazdic_kolize[i].index == 18) {
-        this.seznam_dlazdic_kolize[i].setCollision(false, false, true, false); // left, right, top, bottom
-      }
-    }
+    this.game.nastaveniKolize(this.kolize, [18, 44, 45, 48, 49, 52, 53], false, false, true, false);
 
     //stvoření hráče
     this.hrac = this.game.add.sprite(300, 600, "ruza");
@@ -108,7 +96,6 @@ GumpleRush.Gympl.prototype = {
   },
   update: function() {
     this.game.physics.arcade.collide(this.hrac, this.kolize);
-    this.game.physics.arcade.collide(this.hrac, this.vzhled);
     this.game.physics.arcade.collide(this.vlasta, this.kolize);
     this.game.physics.arcade.collide(this.veronika, this.kolize);
 
